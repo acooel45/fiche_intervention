@@ -56,6 +56,7 @@ if($nbligne2 > 0){
             </nav>
         
     <!-- tableau des détails de l'intervention séléctionné --> 
+    <div class="container">
         <h1>Détails intervention n°<?php echo $idInt?></h1>
         
         <table class="table table-bordered">
@@ -86,6 +87,7 @@ if($nbligne2 > 0){
         </table>
         
         <a href="<?php echo "modif2Inter.php?codeInt=".$idInt ?>" role="button" class="btn btn-primary" >Modifier</a>
+    </div>
     </body>
     
 </html>

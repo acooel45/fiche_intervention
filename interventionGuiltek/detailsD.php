@@ -44,12 +44,13 @@ $ligne = $table->fetch();
             </div>
             </nav>
     
-    <!-- tableau des détails de la demande sélectionné --> 
+    <!-- tableau des détails de la demande sélectionné -->
+    <div class="container">
         <h1>Détails demande n°<?php echo $idDemande?></h1>
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                        <th class="col-2">Demandeur <br>contact, téléphone ...</th>
+                    <th class="col-2">Nom du demandeur <br>Adresse <br>Code postal <br>Téléphone <br>Email <br>Utilisateur <br>Mot de passe</th>
                         <td class="col-6"><?php echo $ligne['nomDem'].'<br>'.$ligne['adresseDem'].'<br>'.$ligne['CPDem'].'<br>'.$ligne['telDem'].'<br>'.$ligne['emailDem'].'<br>'.$ligne['utilisateurDem'].'<br>'.$ligne['mdpDem'] ?></td>
                         <th class="col-2">Date de la demande</th>
                         <td class="col-2"><?php echo $ligne['dateDem'] ?></td>
@@ -85,13 +86,17 @@ $ligne = $table->fetch();
                             if($nbligne2 > 0){
                                 $stringintervenant = 'intervenant: ';
                                 foreach($ligneall3 as $ligne3){
-                                    $stringintervenant = $stringintervenant.$ligne3['nomIn'].' ';
+                                    if($stringintervenant == 'intervenant: '){
+                                        $stringintervenant = $stringintervenant.$ligne3['nomIn'];
+                                    }else{
+                                        $stringintervenant = $stringintervenant.', '.$ligne3['nomIn'];
+                                    }
                                 }
                             }
                     ?>
                     <a href="<?php echo "detailsI.php?codeInt=".$ligne2['codeInt'] ?>" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"><?php echo $ligne2['natureInt'] ?></h5>
+                        <h5 class="mb-1">Nature de l'intervention: <?php echo $ligne2['natureInt'] ?></h5>
                         <small>Date début: <?php echo $ligne2['dateDebut'] ?></small>
                         <small>Date fin: <?php echo $ligne2['dateFin'] ?></small>
                     </div>
@@ -101,6 +106,7 @@ $ligne = $table->fetch();
                         }}
                     ?>
         </div>
+    </div>
     </body>
     
 </html>

@@ -36,4 +36,4 @@ $sql3 = 'INSERT INTO Faire VALUES ("'.$ligne2['codeDemande'].'","'.$ligne['codeD
 
 $table5 = $connection->exec($sql3) or die (print_r($connection->errorInfo()));
 
-header("Location: validerdemande.php");
+header("Location: validerDemande.php");
