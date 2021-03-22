@@ -80,7 +80,7 @@
                     
                         <div class="col-2">
                             <h3>Date début</h3>
-                            <input type="date" id="dateD" name="dateD">
+                            <input type="date" id="dateD" name="dateD" value="<?php echo date('Y-m-d'); ?>">
                         </div>
                         
                         <div class="col-2">

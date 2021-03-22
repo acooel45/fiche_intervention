@@ -1,6 +1,3 @@
-<?php 
-$date = date('Y-m-d');
-?>
 <!DOCTYPE html>
 
 <html>
@@ -104,7 +101,7 @@ $date = date('Y-m-d');
                         
                         <div class="col-md-4">
                             <h3>Date de la demande</h3>
-                            <input type="date" id="date" name="date" value="<?php echo $date; ?>" required>
+                            <input type="date" id="date" name="date" value="<?php echo date('Y-m-d'); ?>" required>
                         </div>
                         
                         <div class="col-12">
