@@ -1,7 +1,7 @@
 <?php 
 require 'Connexion.php';
 $idInt = $_GET["codeInt"];
-$sql = 'SELECT * FROM intervention I, assister A, intervenant J WHERE I.codeInt = A.codeInt AND A.emailIn = J.emailIn AND I.codeInt = '.$idInt.';';
+$sql = 'SELECT * FROM intervenir K, intervention I, assister A, intervenant J WHERE K.codeInt = I.codeInt AND I.codeInt = A.codeInt AND A.emailIn = J.emailIn AND I.codeInt = '.$idInt.';';
 $table = $connection->query($sql) or die (print_r($connection->errorInfo()));
 $ligne = $table->fetch();
 
@@ -47,9 +47,6 @@ if($nbligne2 > 0){
                         <li class="nav-item">
                             <a class="nav-link active" href="creerIntervention.php">Enregistrer une intervention</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="modifierIntervention.php">Modifier une intervention</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -85,8 +82,8 @@ if($nbligne2 > 0){
                 </tr>
             </tbody>
         </table>
-        
-        <a href="<?php echo "modif2Inter.php?codeInt=".$idInt ?>" role="button" class="btn btn-primary" >Modifier</a>
+        <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" role="button" class="btn btn-primary" >Retour</a>
+        <a href="<?php echo "modifIntervention.php?codeInt=".$idInt ?>" role="button" class="btn btn-primary" >Modifier</a>
     </div>
     </body>
     

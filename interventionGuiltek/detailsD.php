@@ -36,9 +36,6 @@ $ligne = $table->fetch();
                         <li class="nav-item">
                             <a class="nav-link active" href="creerIntervention.php">Enregistrer une intervention</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="modifierIntervention.php">Modifier une intervention</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -67,8 +64,8 @@ $ligne = $table->fetch();
         </table>
     <!-- liste des interventions en fonction de la demande --> 
         <h3>Liste intervention</h3>
-        <div class="list-group form1">
-                    
+        
+            <ul class="list-group">
                     <?php
                         require 'Connexion.php';
                         $sql2 = 'SELECT * FROM demande D, intervenir R, intervention I WHERE D.codeDemande = R.codeDemande AND R.codeInt = I.codeInt AND D.codeDemande = '.$idDemande.';';
@@ -94,18 +91,22 @@ $ligne = $table->fetch();
                                 }
                             }
                     ?>
-                    <a href="<?php echo "detailsI.php?codeInt=".$ligne2['codeInt'] ?>" class="list-group-item list-group-item-action">
+                    <li class="list-group-item">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">Nature de l'intervention: <?php echo $ligne2['natureInt'] ?></h5>
                         <small>Date début: <?php echo $ligne2['dateDebut'] ?></small>
                         <small>Date fin: <?php echo $ligne2['dateFin'] ?></small>
+                        <a href="<?php echo "detailsI.php?codeInt=".$ligne2['codeInt'] ?>" class="btn btn-primary" >Détails</a>
+                        <a href="<?php echo "modifIntervention.php?codeInt=".$ligne2['codeInt'] ?>" class="btn btn-primary" >Modifier</a>
                     </div>
                     <p class="mb-1"><?php echo $stringintervenant ?></p>
-                    </a>
+                    </li>
                     <?php
                         }}
                     ?>
-        </div>
+            </ul>
+        <br>
+        <a href="liste_demande.php" role="button" class="btn btn-primary" >Retour</a>
     </div>
     </body>
     
