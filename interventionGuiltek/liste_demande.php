@@ -6,11 +6,12 @@
         <title>Liste des demandes</title>
         
         <link rel="stylesheet" href="bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js">
         <link rel="stylesheet" href="style.css">
     </head>
     
     <body>
-        
+    <!-- barre de navigation --> 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +35,7 @@
                 </div>
             </div>
         </nav>
-        
+    <!-- liste des demandes -->     
         <div class="container">
             <h1>Liste des demandes</h1>
             

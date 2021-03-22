@@ -29,7 +29,8 @@ if($nbligne2 > 0){
     </head>
     
     <body>
-
+        
+        <!-- barre de navigation --> 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,6 +54,8 @@ if($nbligne2 > 0){
                 </div>
             </div>
             </nav>
+        
+    <!-- tableau des détails de l'intervention séléctionné --> 
         <h1>Détails intervention n°<?php echo $idInt?></h1>
         
         <table class="table table-bordered">
