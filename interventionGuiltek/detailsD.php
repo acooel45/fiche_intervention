@@ -18,7 +18,8 @@ $ligne = $table->fetch();
     </head>
     
     <body>
-
+        
+    <!-- barre de navigation --> 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +43,8 @@ $ligne = $table->fetch();
                 </div>
             </div>
             </nav>
+    
+    <!-- tableau des détails de la demande sélectionné --> 
         <h1>Détails demande n°<?php echo $idDemande?></h1>
         <table class="table table-bordered">
             <tbody>
@@ -61,6 +64,7 @@ $ligne = $table->fetch();
                 </tr>
             </tbody>
         </table>
+    <!-- liste des interventions en fonction de la demande --> 
         <h3>Liste intervention</h3>
         <div class="list-group form1">
                     

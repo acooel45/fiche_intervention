@@ -11,7 +11,7 @@
     </head>
     
     <body>
-        
+    <!-- barre de navigation -->    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </nav>
-        
+    <!-- formulaire pour enregistrer une demande -->    
         <div class="container">
             <h1>Enregistrer une demande</h1>
             <form method="post" class="form1 row g-3" action="demandeBO.php">
