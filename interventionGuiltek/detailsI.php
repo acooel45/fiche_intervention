@@ -62,9 +62,9 @@ if($nbligne2 > 0){
                         <th class="col-2">Intervenant(s)</th>
                         <td class="col-4"><?php echo $stringintervenant?></td> 
                         <th class="col-1">Date début</th>
-                        <td class="col-1"><?php echo $ligne['dateDebut'] ?></td>
+                        <td class="col-1"><?php echo date('Y-m-d', strtotime($ligne['dateDebut'])) ?></td>
                         <th class="col-1">Date fin</th>
-                        <td class="col-1"><?php echo $ligne['dateFin'] ?></td>
+                        <td class="col-1"><?php echo date('Y-m-d', strtotime($ligne['dateFin'])) ?></td>
                         <th class="col-1">Durée</th>
                         <td class="col-1"><?php echo $ligne['dureeInt'].' h' ?></td>
                 </tr>

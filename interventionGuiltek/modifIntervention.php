@@ -1,3 +1,11 @@
+<?php 
+require 'Connexion.php';
+$idIntervention = $_GET["codeInt"];
+$sqlI = 'SELECT * FROM intervention WHERE codeInt = '.$idIntervention.';';
+$tableI = $connection->query($sqlI) or die (print_r($connection->errorInfo()));
+$ligneI = $tableI->fetch();
+?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -30,8 +38,8 @@
             </div>
         </nav>
         <div class="container">
-            <h1>Modifier Intervention</h1>
-            <form method="post" class="form1 row g-3" action="cInterventionBO.php">
+            <h1>Modifier Intervention n°<?php echo $idIntervention ?></h1>
+            <form method="post" class="form1 row g-3" action="mInterventionBO.php">
                         <div class="col-8">
                             <h3>Intervenant(s)</h3>
                             <?php 
@@ -56,35 +64,35 @@
                     
                         <div class="col-2">
                             <h3>Date début</h3>
-                            <input type="date" id="dateD" name="dateD">
+                            <input type="date" id="dateD" name="dateD" value="<?php echo date('Y-m-d',strtotime($ligneI['dateDebut'])) ?>">
                         </div>
                         
                         <div class="col-2">
                             <h3>Date fin</h3>
-                            <input type="date" id="dateF" name="dateF">
+                            <input type="date" id="dateF" name="dateF" value="<?php echo date('Y-m-d', strtotime($ligneI['dateFin'])) ?>">
                         </div>
                         
                         <div class="col-12">
                             <h3>Durée de l'intervention(en heures):</h3>
-                            <input id="num" name="num" type="number" min="0">
+                            <input id="num" name="num" type="number" min="0" value="<?php echo $ligneI['dureeInt'] ?>">
                         </div>
                 
                         <h3>Nature de l'intervention</h3>
                 
                         <div class="col-12">
-                            <textarea class="form-control" id="natureIntervention" name="natureIntervention" style="height: 130px" required></textarea>
+                            <textarea class="form-control" id="natureIntervention" name="natureIntervention" style="height: 130px" placeholder="<?php echo $ligneI['natureInt'] ?>" required></textarea>
                         </div>
                         
                         <h3>Etat après intervention</h3>
 
                         <div class="col-12">
-                            <textarea class="form-control" id="Etat" name="etat" style="height: 130px"></textarea>
+                            <textarea class="form-control" id="Etat" name="etat" style="height: 130px" placeholder="<?php echo $ligneI['etat'] ?>"></textarea>
                         </div>
 
                         <h3>Observations</h3>
                     
                         <div class="col-12">
-                            <textarea class="form-control" id="observation" name="observation" style="height: 130px"></textarea>
+                            <textarea class="form-control" id="observation" name="observation" style="height: 130px" placeholder="<?php echo $ligneI['observations']?>"></textarea>
                         </div>
                         
                         <div class="col-12">

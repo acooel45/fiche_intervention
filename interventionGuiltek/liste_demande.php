@@ -36,7 +36,7 @@
         <div class="container">
             <h1>Liste des demandes</h1>
             
-                <div class="list-group form1">
+                <ul class="list-group">
                     
                     <?php
                         require 'Connexion.php';
@@ -49,17 +49,19 @@
                         }else{
                         foreach($ligneall as $ligne){
                     ?>
-                    <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" class="list-group-item list-group-item-action">
+                    <li class="list-group-item">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"><?php echo 'n°'.$ligne['codeDem'].' '.$ligne['nomDem'] ?></h5>
                         <small><?php echo $ligne['dateDem'] ?></small>
+                        <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" class="btn btn-primary" >Détails</a>
+                        <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" class="btn btn-primary" >Détails</a>
                     </div>
                     <p class="mb-1"><?php echo $ligne['natureDem'] ?></p>
-                    </a>
+                    </li>
                     <?php
                         }}
                     ?>
-                </div>
+                </ul>
         </div>
     </body>
     
