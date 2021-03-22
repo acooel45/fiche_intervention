@@ -51,12 +51,12 @@
                     ?>
                     <li class="list-group-item">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"><?php echo 'n°'.$ligne['codeDem'].' '.$ligne['nomDem'] ?></h5>
+                        <h5 class="mb-1"><?php echo 'n°'.$ligne['codeDem'].' nom: '.$ligne['nomDem'] ?></h5>
                         <small><?php echo $ligne['dateDem'] ?></small>
                         <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" class="btn btn-primary" >Détails</a>
                         <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" class="btn btn-primary" >Détails</a>
                     </div>
-                    <p class="mb-1"><?php echo $ligne['natureDem'] ?></p>
+                    <p class="mb-1">Nature de la demande: <?php echo $ligne['natureDem'] ?></p>
                     </li>
                     <?php
                         }}
