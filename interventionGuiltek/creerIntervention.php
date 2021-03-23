@@ -34,6 +34,7 @@
         <div class="container">
             <h1>Enregistrer Intervention</h1>
             <form method="post" class="form1 row g-3" action="cInterventionBO.php">
+                <input type="hidden" name="idPage" id="idPage" value="creerIntervention">
                     <h3>Selectionner la demande</h3>
                     <select class="form-select" size="4" aria-label="size 4 select example" id="demande" name="demande" required>
                             <?php 

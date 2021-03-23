@@ -1,6 +1,7 @@
 <?php
 
 require 'Connexion.php';
+session_start();
 
 $nomDemandeur = htmlentities($_REQUEST['nomDem']);
 $date = htmlentities($_REQUEST['date']);
@@ -12,6 +13,7 @@ $utilisateurDemandeur = htmlentities($_REQUEST['utilisateurDem']);
 $mdpDemandeur = htmlentities($_REQUEST['mdpDemandeur']);
 $equipement = htmlentities($_REQUEST['Equipement']);
 $natureDemande = htmlentities($_REQUEST['natureDemande']);
+$_SESSION['idPage'] = htmlentities('idPage');
 
 $sqlfaire = 'SELECT codeDem FROM demandeur WHERE nomDem = "'.$nomDemandeur.'" AND emailDem = "'.$email.'";';
 $sqlfaire2 = 'SELECT codeDemande FROM demande WHERE natureDem = "'.$natureDemande.'" AND Equipement = "'.$equipement.'";';

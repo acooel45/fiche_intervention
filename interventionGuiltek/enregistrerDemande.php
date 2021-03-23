@@ -36,6 +36,7 @@
         <div class="container">
             <h1>Enregistrer une demande</h1>
             <form method="post" class="form1 row g-3" action="demandeBO.php">
+                <input type="hidden" name="idPage" id="idPage" value="creerDemande">
                 <h3>Demandeur</h3>
                         <div class="col-md-4">
                             
