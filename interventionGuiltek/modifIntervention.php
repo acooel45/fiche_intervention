@@ -1,7 +1,7 @@
 <?php 
 require 'Connexion.php';
 $idIntervention = $_GET["codeInt"];
-$sqlI = 'SELECT * FROM intervention WHERE codeInt = '.$idIntervention.';';
+$sqlI = 'SELECT * FROM intervention I, intervenir J WHERE I.codeInt = J.codeInt AND I.codeInt = '.$idIntervention.';';
 $tableI = $connection->query($sqlI) or die (print_r($connection->errorInfo()));
 $ligneI = $tableI->fetch();
 ?>
@@ -48,17 +48,24 @@ $ligneI = $tableI->fetch();
                                 $table = $connection->query($sql) or die (print_r($connection->errorInfo()));
                                 $ligneall = $table->fetchAll();
                                 $nbligne = $table->rowcount();
-                                $a = 0;
                                 if($nbligne > 0){
                                 foreach($ligneall as $ligne){
-                                    $a = $a + 1;
+                                    $sql2 = 'SELECT * FROM assister WHERE emailIn = "'.$ligne['emailIn'].'" AND codeInt= '.$idIntervention.' ;';
+                                    $table2 = $connection->query($sql2) or die (print_r($connection->errorInfo()));
+                                    $nbligne2 = $table2->rowcount();
+                                    $checked = '';
+                                    if($nbligne2 != 0){
+                                        $checked = 'checked';
+                                    }
                                     echo 
                                     '<div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="'.$ligne['emailIn'].'" id="'.$ligne['emailIn'].'" name="intervenant[]">
+                                        <input class="form-check-input" type="checkbox" value="'.$ligne['emailIn'].'" id="'.$ligne['emailIn'].'" name="intervenant[]" '.$checked.'>
                                         <label class="form-check-label" for="'.$ligne['emailIn'].'">'.$ligne['nomIn'].'</label>
                                     </div>';
-
-                                }}
+                                    
+                                }}else{
+                                    echo 'il n\'y a aucun intervenant dans la base de données'; 
+                                }
                             ?>
                         </div>
                     
@@ -100,7 +107,7 @@ $ligneI = $tableI->fetch();
                         </div>
 
             </form>
-            
+            <a href="<?php echo "detailsD.php?codeDemande=".$ligneI['codeDemande'] ?>" role="button" class="btn btn-primary" >Retour</a>
         </div>
     </body>
 </html>
