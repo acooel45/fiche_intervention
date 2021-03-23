@@ -86,6 +86,49 @@ if($nbligne2 > 0){
         <!--bouton retour et modifier -->
         <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" role="button" class="btn btn-primary" >Retour</a>
         <a href="<?php echo "modifIntervention.php?codeInt=".$idInt ?>" role="button" class="btn btn-primary" >Modifier</a>
+        
+        <h1>Produits</h1>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="col-1">Ref</th>
+                    <th class="col-8">Produit</th>
+                    <th class="col-1">Qté</th>
+                    <th class="col-1">PU HT</th>
+                    <th class="col-1">Total HT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                
+                ?>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <?php
+                ?>
+                <tr>
+                    <td colspan="3"></td>
+                    <th>Total HT</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <th>TVA  %</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <th>Total TTC</th>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     </body>
     
