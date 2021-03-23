@@ -34,7 +34,9 @@
         <div class="container">
             <h1>Enregistrer Intervention</h1>
             <form method="post" class="form1 row g-3" action="cInterventionBO.php">
+                <input type="hidden" name="idPage" id="idPage" value="creerIntervention">
                     <h3>Selectionner la demande</h3>
+                    <div class="col-4">
                     <select class="form-select" size="4" aria-label="size 4 select example" id="demande" name="demande" required>
                             <?php 
                                 require 'Connexion.php';
@@ -53,8 +55,8 @@
                                 }
                             ?>
                         </select>
-                    
-                        <div class="col-8">
+                    </div>
+                        <div class="col-2">
                             <h3>Intervenant(s)</h3>
                             <?php 
                                 require 'Connexion.php';
@@ -80,17 +82,17 @@
                     
                         <div class="col-2">
                             <h3>Date début</h3>
-                            <input type="date" id="dateD" name="dateD" value="<?php echo date('Y-m-d'); ?>">
+                            <input type="date" id="dateD" name="dateD" value="<?php echo date('Y-m-d'); ?>" required>
                         </div>
                         
                         <div class="col-2">
                             <h3>Date fin</h3>
-                            <input type="date" id="dateF" name="dateF">
+                            <input type="date" id="dateF" name="dateF" required>
                         </div>
                         
                         <div class="col-12">
                             <h3>Durée de l'intervention(en heures):</h3>
-                            <input id="num" name="num" type="number" min="0" value="0">
+                            <input id="num" name="num" type="number" min="0" value="0" required>
                         </div>
                 
                         <h3>Nature de l'intervention</h3>

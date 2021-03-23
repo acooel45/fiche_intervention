@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>VerifierDemande</title>
+        <title>Validation</title>
         
         <link rel="stylesheet" href="bootstrap-5.0.0-beta2-dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
@@ -27,14 +27,31 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="creerIntervention.php">Enregistrer une intervention</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="modifierIntervention.php">Modifier une intervention</a>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <h2>La demande à été enregistré</h2>    
+        <div class="container">
+        <br>
+        <?php 
+            session_start();
+            switch($_SESSION['idPage']){
+                case "creerDemande":
+                    echo '<h2>La demande à été crée</h2>';
+                    $href = "enregistrerDemande.php";
+                    break;
+                case "creerIntervention":
+                    echo '<h2>L\'intervention à été crée</h2>';
+                    $href = "creerIntervention.php";
+                    break;
+                case "modifIntervention":
+                    echo '<h2>L\'intervention à été modifié</h2>';
+                    $href = "modifIntervention.php?codeInt=".$_SESSION['idIntervention'];
+                    break;
+            }
+            echo '<br><a href='.$href.' role="button" class="btn btn-primary" >Retour</a>';
+        ?> 
+        </div>
     </body>
     
 </html>
