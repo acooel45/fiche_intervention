@@ -1,6 +1,3 @@
-<?php 
-$date = date('Y-m-d');
-?>
 <!DOCTYPE html>
 
 <html>
@@ -30,9 +27,6 @@ $date = date('Y-m-d');
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="creerIntervention.php">Enregistrer une intervention</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="modifierIntervention.php">Modifier une intervention</a>
                         </li>
                     </ul>
                 </div>
@@ -107,7 +101,7 @@ $date = date('Y-m-d');
                         
                         <div class="col-md-4">
                             <h3>Date de la demande</h3>
-                            <input type="date" id="date" name="date" value="<?php echo $date; ?>" required>
+                            <input type="date" id="date" name="date" value="<?php echo date('Y-m-d'); ?>" required>
                         </div>
                         
                         <div class="col-12">

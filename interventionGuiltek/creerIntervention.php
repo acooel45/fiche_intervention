@@ -26,9 +26,6 @@
                         <li class="nav-item">
                             <a class="nav-link disabled" href="creerIntervention.php" >Enregistrer une intervention</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="modifierIntervention.php">Modifier une intervention</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -83,7 +80,7 @@
                     
                         <div class="col-2">
                             <h3>Date début</h3>
-                            <input type="date" id="dateD" name="dateD">
+                            <input type="date" id="dateD" name="dateD" value="<?php echo date('Y-m-d'); ?>">
                         </div>
                         
                         <div class="col-2">
