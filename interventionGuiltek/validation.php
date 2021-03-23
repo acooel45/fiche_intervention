@@ -31,20 +31,27 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
+        <br>
         <?php 
             session_start();
             switch($_SESSION['idPage']){
                 case "creerDemande":
                     echo '<h2>La demande à été crée</h2>';
+                    $href = "enregistrerDemande.php";
                     break;
                 case "creerIntervention":
                     echo '<h2>L\'intervention à été crée</h2>';
+                    $href = "creerIntervention.php";
                     break;
                 case "modifIntervention":
                     echo '<h2>L\'intervention à été modifié</h2>';
+                    $href = "modifIntervention.php";
                     break;
             }
+            echo '<br><a href='.$href.' role="button" class="btn btn-primary" >Retour</a>';
         ?> 
+        </div>
     </body>
     
 </html>

@@ -13,7 +13,7 @@ $utilisateurDemandeur = htmlentities($_REQUEST['utilisateurDem']);
 $mdpDemandeur = htmlentities($_REQUEST['mdpDemandeur']);
 $equipement = htmlentities($_REQUEST['Equipement']);
 $natureDemande = htmlentities($_REQUEST['natureDemande']);
-$_SESSION['idPage'] = htmlentities('idPage');
+$_SESSION['idPage'] = htmlentities($_REQUEST['idPage']);
 
 $sqlfaire = 'SELECT codeDem FROM demandeur WHERE nomDem = "'.$nomDemandeur.'" AND emailDem = "'.$email.'";';
 $sqlfaire2 = 'SELECT codeDemande FROM demande WHERE natureDem = "'.$natureDemande.'" AND Equipement = "'.$equipement.'";';
@@ -38,4 +38,4 @@ $sql3 = 'INSERT INTO Faire VALUES ("'.$ligne2['codeDemande'].'","'.$ligne['codeD
 
 $table5 = $connection->exec($sql3) or die (print_r($connection->errorInfo()));
 
-header("Location: validerDemande.php");
+header("Location: validation.php");

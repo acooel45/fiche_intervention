@@ -10,7 +10,7 @@ $natInt = htmlentities($_REQUEST['natureIntervention']);
 $etat = htmlentities($_REQUEST['etat']);
 $observation = htmlentities($_REQUEST['observation']);
 $codeDemande = htmlentities($_REQUEST['demande']);
-$_SESSION['idPage'] = htmlentities('idPage');
+$_SESSION['idPage'] = htmlentities($_REQUEST['idPage']);
 
 $sql = 'INSERT INTO intervention (dateDebut, dateFin, dureeInt, natureInt, etat, observations) VALUES (TIMESTAMP("'.$dateD.'"), TIMESTAMP("'.$dateF.'"), '.$duree.', "'.$natInt.'", "'.$etat.'", "'.$observation.'");';
 $table = $connection->exec($sql) or die (print_r($connection->errorInfo()));
@@ -29,4 +29,4 @@ if(isset($_POST['intervenant'])){
     }
 }
 
-header("Location: validerIntervention.php");
+header("Location: validation.php");

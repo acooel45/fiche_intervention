@@ -10,7 +10,7 @@ $etat = htmlentities($_REQUEST['etat']);
 $observation = htmlentities($_REQUEST['observation']);
 $codeDemande = htmlentities($_REQUEST['demande']);
 $idIntervention = htmlentities($_REQUEST['idIntervention']);
-$_SESSION['idPage'] = htmlentities('idPage');
+$_SESSION['idPage'] = htmlentities($_REQUEST['idPage']);
 
 $sqlDelete = 'DELETE FROM assister WHERE codeInt = '.$idIntervention.' ;';
 $tableDelete = $connection->exec($sqlDelete) or die (print_r($connection->errorInfo()));
@@ -26,4 +26,4 @@ if(isset($_POST['intervenant'])){
     }
 }
 
-header("Location: validerMIntervention.php");
+header("Location: validation.php");
