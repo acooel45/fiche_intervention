@@ -54,7 +54,6 @@
                         <h5 class="mb-1"><?php echo 'n°'.$ligne['codeDem'].' nom: '.$ligne['nomDem'] ?></h5>
                         <small><?php echo $ligne['dateDem'] ?></small>
                         <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" class="btn btn-primary" >Détails</a>
-                        <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" class="btn btn-primary" >Détails</a>
                     </div>
                     <p class="mb-1">Nature de la demande: <?php echo $ligne['natureDem'] ?></p>
                     </li>
