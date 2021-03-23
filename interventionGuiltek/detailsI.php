@@ -1,7 +1,7 @@
 <?php 
 require 'Connexion.php';
 $idInt = $_GET["codeInt"];
-$sql = 'SELECT * FROM intervenir K, intervention I, assister A, intervenant J WHERE K.codeInt = I.codeInt AND I.codeInt = A.codeInt AND A.emailIn = J.emailIn AND I.codeInt = '.$idInt.';';
+$sql = 'SELECT * FROM intervenir K, intervention I WHERE K.codeInt = I.codeInt AND I.codeInt = '.$idInt.';';
 $table = $connection->query($sql) or die (print_r($connection->errorInfo()));
 $ligne = $table->fetch();
 
@@ -9,8 +9,8 @@ $sql3 = 'SELECT * FROM assister A, intervenant J WHERE A.emailIn = J.emailIn AND
 $table3 = $connection->query($sql3) or die (print_r($connection->errorInfo()));
 $ligneall3 = $table3->fetchAll();
 $nbligne2 = $table3->rowcount();
+$stringintervenant = '';
 if($nbligne2 > 0){
-    $stringintervenant = '';
     foreach($ligneall3 as $ligne3){
         $stringintervenant = $stringintervenant.$ligne3['nomIn'].'<br>';
     }

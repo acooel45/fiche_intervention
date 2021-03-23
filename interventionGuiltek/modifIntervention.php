@@ -1,7 +1,8 @@
 <?php 
 require 'Connexion.php';
-$idIntervention = $_GET["codeInt"];
-$sqlI = 'SELECT * FROM intervention I, intervenir J WHERE I.codeInt = J.codeInt AND I.codeInt = '.$idIntervention.';';
+session_start();
+$_SESSION['idIntervention'] = $_GET["codeInt"];
+$sqlI = 'SELECT * FROM intervention I, intervenir J WHERE I.codeInt = J.codeInt AND I.codeInt = '.$_SESSION['idIntervention'].';';
 $tableI = $connection->query($sqlI) or die (print_r($connection->errorInfo()));
 $ligneI = $tableI->fetch();
 ?>
@@ -38,7 +39,7 @@ $ligneI = $tableI->fetch();
             </div>
         </nav>
         <div class="container">
-            <h1>Modifier Intervention n°<?php echo $idIntervention ?></h1>
+            <h1>Modifier Intervention n°<?php echo $_SESSION['idIntervention'] ?></h1>
             <form method="post" class="form1 row g-3" action="mInterventionBO.php">
                 <input type="hidden" name="idPage" id="idPage" value="modifIntervention">
                         <div class="col-8">
@@ -51,7 +52,7 @@ $ligneI = $tableI->fetch();
                                 $nbligne = $table->rowcount();
                                 if($nbligne > 0){
                                 foreach($ligneall as $ligne){
-                                    $sql2 = 'SELECT * FROM assister WHERE emailIn = "'.$ligne['emailIn'].'" AND codeInt= '.$idIntervention.' ;';
+                                    $sql2 = 'SELECT * FROM assister WHERE emailIn = "'.$ligne['emailIn'].'" AND codeInt= '.$_SESSION['idIntervention'].' ;';
                                     $table2 = $connection->query($sql2) or die (print_r($connection->errorInfo()));
                                     $nbligne2 = $table2->rowcount();
                                     $checked = '';
@@ -72,12 +73,12 @@ $ligneI = $tableI->fetch();
                     
                         <div class="col-2">
                             <h3>Date début</h3>
-                            <input type="date" id="dateD" name="dateD" value="<?php echo date('Y-m-d',strtotime($ligneI['dateDebut'])) ?>">
+                            <input type="date" id="dateD" name="dateD" value="<?php echo date('Y-m-d',strtotime($ligneI['dateDebut'])) ?>" required>
                         </div>
                         
                         <div class="col-2">
                             <h3>Date fin</h3>
-                            <input type="date" id="dateF" name="dateF" value="<?php echo date('Y-m-d', strtotime($ligneI['dateFin'])) ?>">
+                            <input type="date" id="dateF" name="dateF" value="<?php echo date('Y-m-d', strtotime($ligneI['dateFin'])) ?>" required>
                         </div>
                         
                         <div class="col-12">
@@ -88,19 +89,19 @@ $ligneI = $tableI->fetch();
                         <h3>Nature de l'intervention</h3>
                 
                         <div class="col-12">
-                            <textarea class="form-control" id="natureIntervention" name="natureIntervention" style="height: 130px" placeholder="<?php echo $ligneI['natureInt'] ?>" required></textarea>
+                            <textarea class="form-control" id="natureIntervention" name="natureIntervention" style="height: 130px"><?php echo $ligneI['natureInt'] ?></textarea>
                         </div>
                         
                         <h3>Etat après intervention</h3>
 
                         <div class="col-12">
-                            <textarea class="form-control" id="Etat" name="etat" style="height: 130px" placeholder="<?php echo $ligneI['etat'] ?>"></textarea>
+                            <textarea class="form-control" id="Etat" name="etat" style="height: 130px"><?php echo $ligneI['etat'] ?></textarea>
                         </div>
 
                         <h3>Observations</h3>
                     
                         <div class="col-12">
-                            <textarea class="form-control" id="observation" name="observation" style="height: 130px" placeholder="<?php echo $ligneI['observations']?>"></textarea>
+                            <textarea class="form-control" id="observation" name="observation" style="height: 130px"><?php echo $ligneI['observations']?></textarea>
                         </div>
                         
                         <div class="col-12">

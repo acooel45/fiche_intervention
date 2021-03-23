@@ -80,6 +80,7 @@ $ligne = $table->fetch();
                             $table3 = $connection->query($sql3) or die (print_r($connection->errorInfo()));
                             $ligneall3 = $table3->fetchAll();
                             $nbligne2 = $table3->rowcount();
+                            $stringintervenant = '';
                             if($nbligne2 > 0){
                                 $stringintervenant = 'intervenant: ';
                                 foreach($ligneall3 as $ligne3){
