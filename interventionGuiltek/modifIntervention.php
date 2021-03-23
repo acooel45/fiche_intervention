@@ -1,7 +1,6 @@
 <?php 
 require 'Connexion.php';
 session_start();
-$_SESSION['idIntervention'] = $_GET["codeInt"];
 $sqlI = 'SELECT * FROM intervention I, intervenir J WHERE I.codeInt = J.codeInt AND I.codeInt = '.$_SESSION['idIntervention'].';';
 $tableI = $connection->query($sqlI) or die (print_r($connection->errorInfo()));
 $ligneI = $tableI->fetch();
@@ -109,7 +108,7 @@ $ligneI = $tableI->fetch();
                         </div>
 
             </form>
-            <a href="<?php echo "detailsD.php?codeDemande=".$ligneI['codeDemande'] ?>" role="button" class="btn btn-primary" >Retour</a>
+            <a href="<?php echo "detailsD.php?codeInt=".$ligneI['codeInt'] ?>" role="button" class="btn btn-primary" >Retour</a>
         </div>
     </body>
 </html>

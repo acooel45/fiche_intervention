@@ -1,11 +1,11 @@
 <?php 
 require 'Connexion.php';
-$idInt = $_GET["codeInt"];
-$sql = 'SELECT * FROM intervenir K, intervention I WHERE K.codeInt = I.codeInt AND I.codeInt = '.$idInt.';';
+$_SESSION['idIntervention'] = $_GET["codeInt"];
+$sql = 'SELECT * FROM intervenir K, intervention I WHERE K.codeInt = I.codeInt AND I.codeInt = '.$_SESSION['idIntervention'].';';
 $table = $connection->query($sql) or die (print_r($connection->errorInfo()));
 $ligne = $table->fetch();
 
-$sql3 = 'SELECT * FROM assister A, intervenant J WHERE A.emailIn = J.emailIn AND codeInt = '.$idInt.';';
+$sql3 = 'SELECT * FROM assister A, intervenant J WHERE A.emailIn = J.emailIn AND codeInt = '.$_SESSION['idIntervention'].';';
 $table3 = $connection->query($sql3) or die (print_r($connection->errorInfo()));
 $ligneall3 = $table3->fetchAll();
 $nbligne2 = $table3->rowcount();
@@ -54,7 +54,7 @@ if($nbligne2 > 0){
         
     <!-- tableau des détails de l'intervention séléctionné --> 
     <div class="container">
-        <h1>Détails intervention n°<?php echo $idInt?></h1>
+        <h1>Détails intervention n°<?php echo $_SESSION['idIntervention']?></h1>
         
         <table class="table table-bordered">
             <tbody>
@@ -85,8 +85,9 @@ if($nbligne2 > 0){
         
         <!--bouton retour et modifier -->
         <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" role="button" class="btn btn-primary" >Retour</a>
-        <a href="<?php echo "modifIntervention.php?codeInt=".$idInt ?>" role="button" class="btn btn-primary" >Modifier</a>
+        <a href="<?php echo "modifIntervention.php?codeInt=".$_SESSION['idIntervention'] ?>" role="button" class="btn btn-primary" >Modifier</a>
         
+        <!--tableau des produits -->
         <h1>Produits</h1>
         
         <table class="table table-bordered">
@@ -111,6 +112,7 @@ if($nbligne2 > 0){
                     <td></td>
                 </tr>
                 <?php
+                
                 ?>
                 <tr>
                     <td colspan="3"></td>
@@ -129,6 +131,7 @@ if($nbligne2 > 0){
                 </tr>
             </tbody>
         </table>
+        <a href="<?php echo "ajoutProduit.php?codeInt=".$_SESSION['idIntervention'] ?>" role="button" class="btn btn-primary" >ajouter produit</a>
     </div>
     </body>
     
