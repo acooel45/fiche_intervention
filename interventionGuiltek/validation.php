@@ -46,7 +46,7 @@
                     break;
                 case "modifIntervention":
                     echo '<h2>L\'intervention à été modifié</h2>';
-                    $href = "modifIntervention.php";
+                    $href = "modifIntervention.php?codeInt=".$_SESSION['idIntervention'];
                     break;
             }
             echo '<br><a href='.$href.' role="button" class="btn btn-primary" >Retour</a>';

@@ -10,11 +10,20 @@ $etat = htmlentities($_REQUEST['etat']);
 $observation = htmlentities($_REQUEST['observation']);
 $_SESSION['idPage'] = htmlentities($_REQUEST['idPage']);
 
-$sqlDelete = 'DELETE FROM assister WHERE codeInt = '.$_SESSION['idIntervention'].' ;';
-$tableDelete = $connection->exec($sqlDelete) or die (print_r($connection->errorInfo()));
+$sql = 'SELECT count(*) FROM assister WHERE codeInt = '.$_SESSION['idIntervention'].' ;';
+$table = $connection->query($sql) or die (print_r($connection->errorInfo()));
+$resu = $table->fetch();
+echo $resu['count(*)'];
 
-$sqlUpdate = 'UPDATE intervention SET dateD = TIMESTAMP("'.$dateD.'"), dateF = TIMESTAMP("'.$dateF.'"), dureeInt = '.$duree.', natureInt = "'.natInt.'", etat = "'.$etat.'", observations = "'.$observation.'" WHERE codeInt = '.$_SESSION['idIntervention'].' ;';
-$tableUpdate = $connection->exec($sqlUpdate) or die (print_r($connection->errorInfo()));
+$sqlDelete = 'DELETE FROM assister WHERE codeInt = '.$_SESSION['idIntervention'].' ;';
+
+if($resu['count(*)'] !=0){
+    $table2 = $connection->exec($sqlDelete) or die (print_r($connection->errorInfo()));
+}
+
+$sqlUpdate = 'UPDATE intervention SET dateDebut = TIMESTAMP("'.$dateD.'"), dateFin = TIMESTAMP("'.$dateF.'"), dureeInt = '.$duree.', natureInt = "'.$natInt.'", etat = "'.$etat.'", observations = "'.$observation.'" WHERE codeInt = '.$_SESSION['idIntervention'].' ;';
+
+$table3 = $connection->exec($sqlUpdate) or die (print_r($connection->errorInfo()));
 
 if(isset($_POST['intervenant'])){
     foreach($_POST['intervenant'] as $intervenant){
@@ -24,4 +33,4 @@ if(isset($_POST['intervenant'])){
     }
 }
 
-//header("Location: validation.php");
+header("Location: validation.php");
