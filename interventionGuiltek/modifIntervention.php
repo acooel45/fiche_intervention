@@ -42,7 +42,7 @@ $ligneI = $tableI->fetch();
             <h1>Modifier Intervention n°<?php echo $_SESSION['idIntervention'] ?></h1>
             <form method="post" class="form1 row g-3" action="mInterventionBO.php">
                 <input type="hidden" name="idPage" id="idPage" value="modifIntervention">
-                        <div class="col-8">
+                        <div class="col-2">
                             <h3>Intervenant(s)</h3>
                             <?php 
                                 require 'Connexion.php';

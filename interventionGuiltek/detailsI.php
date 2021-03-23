@@ -82,6 +82,8 @@ if($nbligne2 > 0){
                 </tr>
             </tbody>
         </table>
+        
+        <!--bouton retour et modifier -->
         <a href="<?php echo "detailsD.php?codeDemande=".$ligne['codeDemande'] ?>" role="button" class="btn btn-primary" >Retour</a>
         <a href="<?php echo "modifIntervention.php?codeInt=".$idInt ?>" role="button" class="btn btn-primary" >Modifier</a>
     </div>

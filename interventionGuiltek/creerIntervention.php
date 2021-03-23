@@ -36,6 +36,7 @@
             <form method="post" class="form1 row g-3" action="cInterventionBO.php">
                 <input type="hidden" name="idPage" id="idPage" value="creerIntervention">
                     <h3>Selectionner la demande</h3>
+                    <div class="col-4">
                     <select class="form-select" size="4" aria-label="size 4 select example" id="demande" name="demande" required>
                             <?php 
                                 require 'Connexion.php';
@@ -54,8 +55,8 @@
                                 }
                             ?>
                         </select>
-                    
-                        <div class="col-8">
+                    </div>
+                        <div class="col-2">
                             <h3>Intervenant(s)</h3>
                             <?php 
                                 require 'Connexion.php';
