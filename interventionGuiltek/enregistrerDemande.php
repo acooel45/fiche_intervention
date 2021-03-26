@@ -28,6 +28,9 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="creerIntervention.php">Enregistrer une intervention</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="ajoutProduit.php" >Enregistrer un produit</a>
+                        </li>
                     </ul>
                 </div>
             </div>

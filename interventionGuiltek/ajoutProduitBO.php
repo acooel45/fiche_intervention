@@ -1,7 +1,7 @@
 <?php
 
 require 'Connexion.php';
-
+session_start();
 $ref = htmlentities($_REQUEST['ref']);
 $nomProd = htmlentities($_REQUEST['nomProd']);
 $_SESSION['idPage'] = "ajouterProduit";
