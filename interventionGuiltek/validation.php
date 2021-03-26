@@ -48,6 +48,10 @@
                     echo '<h2>L\'intervention à été modifié</h2>';
                     $href = "modifIntervention.php?codeInt=".$_SESSION['idIntervention'];
                     break;
+                case "ajouterProduit":
+                    echo '<h2>Le produit est ajouté</h2>';
+                    $href = "ajoutProduit.php";
+                    break;
             }
             echo '<br><a href='.$href.' role="button" class="btn btn-primary" >Retour</a>';
         ?> 

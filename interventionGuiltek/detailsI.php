@@ -1,5 +1,6 @@
 <?php 
 require 'Connexion.php';
+session_start();
 $_SESSION['idIntervention'] = $_GET["codeInt"];
 $sql = 'SELECT * FROM intervenir K, intervention I WHERE K.codeInt = I.codeInt AND I.codeInt = '.$_SESSION['idIntervention'].';';
 $table = $connection->query($sql) or die (print_r($connection->errorInfo()));
@@ -102,36 +103,69 @@ if($nbligne2 > 0){
             </thead>
             <tbody>
                 <?php 
-                
-                ?>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <?php
-                
+                    $sqlpro = 'SELECT * FROM utiliser U, produit P WHERE U.refProd = P.refProd AND codeInt = '.$_SESSION['idIntervention'].' ;';
+                    $tablepro = $connection->query($sqlpro) or die (print_r($connection->errorInfo()));
+                    $ligneallpro = $tablepro->fetchAll();
+                    $totalHT = 0;
+                    $totalallHT = 0;
+                    foreach($ligneallpro as $lignepro){
+                        $totalHT = $lignepro['quantiteProd'] * $lignepro['PU'];
+                        $totalallHT = $totalallHT + $totalHT;
+                        echo
+                        '<tr>
+                            <td>'.$lignepro['refProd'].'</td>
+                            <td>'.$lignepro['nomProd'].'</td>
+                            <td>'.$lignepro['quantiteProd'].'</td>
+                            <td>'.$lignepro['PU'].'</td>
+                            <td>'.$totalHT.'</td>
+                        </tr>';
+                    }
                 ?>
                 <tr>
                     <td colspan="3"></td>
                     <th>Total HT</th>
-                    <td></td>
+                    <td><?php echo $totalallHT ?></td>
                 </tr>
                 <tr>
                     <td colspan="3"></td>
                     <th>TVA  %</th>
-                    <td></td>
+                    <td><?php if(isset($_SESSION['TVA'])){echo $_SESSION['TVA'] ;} ?></td>
                 </tr>
                 <tr>
                     <td colspan="3"></td>
                     <th>Total TTC</th>
-                    <td></td>
+                    <td><?php if(isset($_SESSION['TVA'])){echo ($_SESSION['TVA']/100*$totalallHT)+$totalallHT ;} ?></td>
                 </tr>
             </tbody>
         </table>
-        <a href="<?php echo "ajoutProduit.php?codeInt=".$_SESSION['idIntervention'] ?>" role="button" class="btn btn-primary" >ajouter produit</a>
+        <form action='ajoutProduitBO2.php?codeInt="<?php echo $_SESSION['idIntervention'] ?>"' method="post" class="form1 row g-3">
+        <label for="listPro" class="form-label">Ajouter produit :</label>
+            <input class="form-control" list="datalistOptions" id="listPro" name="listPro" placeholder="Tapez pour chercher le produit" >
+            <datalist id="datalistOptions">
+                <?php 
+                    $sqlpro2 = 'SELECT * FROM produit ;';
+                    $tablepro2 = $connection->query($sqlpro2) or die (print_r($connection->errorInfo()));
+                    $ligneallpro2 = $tablepro2->fetchAll();
+                    foreach($ligneallpro2 as $lignepro2){
+                        echo '<option value="'.$lignepro2['nomProd'].'">';
+                    }
+                ?>
+            </datalist>
+            
+            <div class='col-2'>
+            <h3>Quantité:</h3>
+            <input id="Quan" name="Quan" type="number" min="0" value="0" required>
+            </div>
+            <div class='col-2'>
+            <h3>Prix Unitaire:</h3>
+            <input id="PU" name="PU" type="number" min="0" value="0" step="0.01" required>
+            </div>
+            <div class='col-2'>
+                <button type="submit" class="btn btn-primary">Ajouter produit</button>
+            </div>
+        </form>
+        <br>
+        <a href="ajoutProduit.php" role="button" class="btn btn-primary" >Enregistrer un autre produit</a>
     </div>
     </body>
     

@@ -29,19 +29,26 @@
                 </div>
             </div>
         </nav>
+        
         <div class="container">
-            <form>
-                <label for="exampleDataList" class="form-label">Datalist example</label>
-                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-                <datalist id="datalistOptions">
-                    <option value="San Francisco">
-                    <option value="New York">
-                    <option value="Seattle">
-                    <option value="Los Angeles">
-                    <option value="Chicago">
-                </datalist>
-            </form>
+            <form action='ajoutProduitBO.php' method="post" class="form1 row g-3">
+            <div class="col-md-4">
+                            <label for="ref" class="form-label"></label>
+                            <div class="input-group input-group-sm mb-3">
+                                <input type="text" class="form-control" id="ref" name="ref" required>
+                            </div>
+                        </div>    
             
+            <div class="col-md-4">
+                            <label for="nomProd" class="form-label">Mot de passe</label>
+                            <div class="input-group input-group-sm mb-3">
+                                <input type="text" class="form-control" id="nomProd" name="nomProd" required>
+                            </div>
+                        </div> 
+            <div class='col-2'>
+                <button type="submit" class="btn btn-primary">Ajouter produit</button>
+            </div>
+            </form>
         </div>
     </body>
 </html>
