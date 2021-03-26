@@ -111,7 +111,7 @@ $ligneI = $tableI->fetch();
                         </div>
 
             </form>
-            <a href="<?php echo "detailsD.php?codeInt=".$ligneI['codeInt'] ?>" role="button" class="btn btn-primary" >Retour</a>
+            <a href="<?php echo "detailsI.php?codeInt=".$ligneI['codeInt'] ?>" role="button" class="btn btn-primary" >Retour</a>
         </div>
     </body>
 </html>

@@ -10,10 +10,10 @@ $sql3 = 'SELECT * FROM assister A, intervenant J WHERE A.emailIn = J.emailIn AND
 $table3 = $connection->query($sql3) or die (print_r($connection->errorInfo()));
 $ligneall3 = $table3->fetchAll();
 $nbligne2 = $table3->rowcount();
-$stringintervenant = '';
+$_SESSION['stringintervenant'] = '';
 if($nbligne2 > 0){
     foreach($ligneall3 as $ligne3){
-        $stringintervenant = $stringintervenant.$ligne3['nomIn'].'<br>';
+        $_SESSION['stringintervenant'] = $_SESSION['stringintervenant'].$ligne3['nomIn'].'<br>';
     }
 }
 ?>
@@ -64,7 +64,7 @@ if($nbligne2 > 0){
             <tbody>
                 <tr>
                         <th class="col-2">Intervenant(s)</th>
-                        <td class="col-4"><?php echo $stringintervenant?></td> 
+                        <td class="col-4"><?php echo $_SESSION['stringintervenant']?></td> 
                         <th class="col-1">Date début</th>
                         <td class="col-1"><?php echo date('Y-m-d', strtotime($ligne['dateDebut'])) ?></td>
                         <th class="col-1">Date fin</th>
@@ -168,7 +168,7 @@ if($nbligne2 > 0){
             </div>
         </form>
         <br>
-        <a href="ajoutProduit.php" role="button" class="btn btn-primary" >Enregistrer un autre produit</a>
+        <a href="ImpIntervention.php" role="button" class="btn btn-primary" >Imprimer la fiche d'intervention</a>
     </div>
     </body>
     
