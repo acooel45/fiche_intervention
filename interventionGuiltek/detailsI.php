@@ -100,8 +100,8 @@ if($nbligne2 > 0){
                     <th class="col-1">Ref</th>
                     <th class="col-8">Produit</th>
                     <th class="col-1">Qté</th>
-                    <th class="col-1">PU HT</th>
-                    <th class="col-1">Total HT</th>
+                    <th class="col-1">PU HT €</th>
+                    <th class="col-1">Total HT €</th>
                 </tr>
             </thead>
             <tbody>
@@ -126,17 +126,17 @@ if($nbligne2 > 0){
                 ?>
                 <tr>
                     <td colspan="3"></td>
-                    <th>Total HT</th>
+                    <th>Total HT €</th>
                     <td><?php echo $totalallHT ?></td>
                 </tr>
                 <tr>
-                    <td colspan="3"></td>
+                    <td colspan="3"><form action="modifTVA.php"><h4>Modifier la TVA:</h4><input id="TVA" name="TVA" type="number" min="0" value="0" step="0.01" required><button type="submit" class="btn btn-primary">Modifier TVA</button></form></td>
                     <th>TVA  %</th>
                     <td><?php if(isset($_SESSION['TVA'])){echo $_SESSION['TVA'] ;} ?></td>
                 </tr>
                 <tr>
                     <td colspan="3"></td>
-                    <th>Total TTC</th>
+                    <th>Total TTC €</th>
                     <td><?php if(isset($_SESSION['TVA'])){echo ($_SESSION['TVA']/100*$totalallHT)+$totalallHT ;} ?></td>
                 </tr>
             </tbody>

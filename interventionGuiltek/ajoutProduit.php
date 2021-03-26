@@ -34,6 +34,7 @@
         </nav>
         
         <div class="container">
+            <h1>Enregistrer un autre produit</h1>
             <form action='ajoutProduitBO.php' method="post" class="form1 row g-3">
             <div class="col-md-4">
                             <label for="ref" class="form-label">Référence:</label>
